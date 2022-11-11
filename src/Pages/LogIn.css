@@ -1,0 +1,60 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body{
+    background: linear-gradient(
+        90deg,
+        rgb(231, 222, 141) 0%,
+        rgb(63, 198, 219) 100%
+    )
+}
+
+.loginForm{
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 520px;
+    min-height: 520px;
+    background: black;
+    text-align: center;
+    margin: 128px auto;
+    border-radius: 10px;
+    padding-bottom: 32px;
+}
+
+label{
+    margin: 32px;
+    color: white;
+    font-size: 40;
+}
+
+h1{
+    margin: 32px;
+    color: white;
+    font-size: 100;
+}
+
+p{
+    margin: 32px;
+    color: white;
+    font-size: 40;
+}
+
+button{
+    padding: 16px;
+    border: none;
+    border-radius: 4px 4px 4px 4px;
+    cursor: pointer;
+    outline: none;
+    background: linear-gradient(
+        90deg,
+        rgb(54, 212, 230) 0%,
+        rgb(181, 50, 214) 100%
+    );
+    color: #fff;
+    text-transform: capitalize;
+}
