@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './LogIn.css'
 
-export const LoginForm = ({redirect}) => {
+export const LoginForm = ( { redirect } ) => {
 
   const [user, setUser] = useState(undefined)
   const [password, setPassword] = useState(undefined)
@@ -10,33 +10,30 @@ export const LoginForm = ({redirect}) => {
 
 
   const submitHandler = () => {
-    if (user == '' || user == undefined ){ message = "You must enter an user name"; return } 
-    if (password == '' || password == undefined ){ message = "You must enter a password"; return }
+    
+    if( user === undefined || user === '' ){ setMessage("Enter your user name"); return } 
+    if( password === undefined || password === '' ){ setMessage("Enter your password"); return } 
 
-    //Función conectado con el backend
+    setMessage(undefined)
+    const userInfo = {
+      user,
+      password
+    }
 
   }
-
-  const handleUserOnChange = (e) => { 
-    setUser(e.target.value)
-   }
-
-  const handlePasswordOnChange = (e) => {
-     setPassword(e.target.value)
-   }
 
 
   return (
 
     <>
       <div className='loginForm'>
-        <h1>Bank Account</h1>
+        <h1>UP Bank</h1>
+        <p className='errorMessage'>{message}</p>
         <form onSubmit={submitHandler}>
-          <label>ID: </label> <input onChange={ (e) => { setUser(e.target.value) } }/> <br/>
-          <label>Password: </label> <input type="password" onChange={ (e) => { setPassword(e.target.value) } }/> <br/>
+          <label>User name: </label> <input onChange={ (e) => { setUser(e.target.value) } }/> <br/><br/>
+          <label>Password: </label> <input type="password" onChange={ (e) => { setPassword(e.target.value) } }/> <br/><br/><br/>
           <button type='submit'>Log in</button>
-          <p> Don't have an account? <a onClick={ redirect }>Sign In</a> </p>
-          <p>{message}</p>
+          <p> Don't have an account? <u onClick={ redirect }>Sign In</u> </p> 
         </form>
       </div>
     </>

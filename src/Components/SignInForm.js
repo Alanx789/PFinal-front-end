@@ -1,31 +1,49 @@
 import React, { useState } from 'react'
+import './signIn.css'
 
-export const SignInForm = ( {redirect} ) => {
+export const SignInForm = ( { redirect } ) => {
 
   //Variables del usuario
   const [name, setName] = useState(undefined)
-  const [lastname, setLastname] = useState(undefined)
+  const [lastName, setLastName] = useState(undefined)
   const [phone, setPhone] = useState(undefined)
   const [password, setPassword] = useState(undefined)
   const [confirmPassword, setConfirmPassword] = useState(undefined)
 
   //Para la verificacion de igualdad
   const [message, setMessage] = useState(undefined)
-  const [verification, setVerification] = useState(undefined)
-
-  //Verificar contraseña
-  const verifyPassword = () => {
-    if(password === confirmPassword){
-      setVerification(true) 
-    }else{ 
-      setMessage('Passwords must match')
-    }
-  }
+  
+  
   const handleSubmit = () => {
 
-    verifyPassword
-    if( verification ){
-      setMessage(" Login ")
+    //Verificar que los campos tengan datos
+    if( name === '' || lastName === '' || phone === '' || password === '' || confirmPassword === '' ){ 
+      setMessage("You must fill in all fields")
+      return 
+    }
+    
+    if( name === undefined || lastName === undefined || phone === undefined || password === undefined || 
+      confirmPassword === undefined ){ 
+        setMessage("You must fill in all fields") 
+        return 
+    }
+
+    if( password === confirmPassword){
+      setMessage(undefined)
+
+      const newUser = {
+        userID : "A",
+        name : {
+          firstName: name,
+          lastName: lastName,
+        },
+        phone,
+        password
+      }
+      console.log(newUser)
+
+    } else{
+      setMessage("Passwords must match")
     }
 
   }
@@ -34,15 +52,17 @@ export const SignInForm = ( {redirect} ) => {
   return (
 
     <>
-      <div>
+      <div className='signInForm'>
+        <h1> Account creation </h1>
+        <p className='errorMessage'>{message}</p>
         <form  onSubmit={ handleSubmit }>
-          <label>Name:  </label> <input onChange={ (e) => { setName( e.target.value ) } }/> <br/>
-          <label>Lastname:  </label> <input onChange={ (e) => { setLastname( e.target.value ) } }/> <br/>
-          <label>Phone:  </label> <input onChange={ (e) => { setPhone( e.target.value ) } }/> <br/>
-          <label>Password: </label> <input onChange={ (e) => { setPassword( e.target.value )} }/> <br/>
-          <label>Confirm password: </label> <input onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/>
-          <button type="submit" >Sign in</button>
-          <p> Already have an account? <a onClick={redirect}>Log In</a> </p>
+          <label>First Name:   </label> <input onChange={ (e) => { setName( e.target.value ) } }/> <br/><br/>
+          <label>Last name:  </label> <input onChange={ (e) => { setLastName( e.target.value ) } }/> <br/><br/>
+          <label>Phone: </label> <input onChange={ (e) => { setPhone( e.target.value ) } }/> <br/><br/>
+          <label>New password: </label> <input onChange={ (e) => { setPassword( e.target.value )} }/> <br/><br/>
+          <label>Confirm password: </label> <input onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/><br/><br/>
+          <button /* type="submit" */ onClick={ handleSubmit } >Sign in</button>
+          <p> Already have an account? <u onClick={ redirect } >Log In</u> </p>
         </form>
       </div>
     </>
