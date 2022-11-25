@@ -17,6 +17,15 @@ export const LoginForm = ({redirect}) => {
 
   }
 
+  const handleUserOnChange = (e) => { 
+    setUser(e.target.value)
+   }
+
+  const handlePasswordOnChange = (e) => {
+     setPassword(e.target.value)
+   }
+
+
   return (
 
     <>

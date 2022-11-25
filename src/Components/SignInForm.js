@@ -21,7 +21,6 @@ export const SignInForm = ( {redirect} ) => {
       setMessage('Passwords must match')
     }
   }
-
   const handleSubmit = () => {
 
     verifyPassword
@@ -44,7 +43,6 @@ export const SignInForm = ( {redirect} ) => {
           <label>Confirm password: </label> <input onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/>
           <button type="submit" >Sign in</button>
           <p> Already have an account? <a onClick={redirect}>Log In</a> </p>
-          <p>{message}</p>
         </form>
       </div>
     </>
