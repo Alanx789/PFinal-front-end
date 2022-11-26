@@ -13,7 +13,7 @@ body{
     )
 }
   
-.loginForm{
+.generalDiv{
     display:flex;
     flex-direction: column;
     justify-content: start;
@@ -71,15 +71,13 @@ u{
     font-size: 32;
 }
 
-.signInForm{
+.showUserName{
     display:flex;
     flex-direction: column;
     justify-content: start;
-    width: 520px;
-    min-height: 300px;
+    width: auto;
     background: rgb(255, 255, 255);
-    text-align: center;
-    margin: 128px auto;
+    margin: 0 auto;
     border-radius: 10px;
-    padding-bottom: 32px;
+    padding-bottom: 1px;
 }

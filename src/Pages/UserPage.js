@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const UserPage = ({id = 0}) => {
+export const UserPage = ({id}) => {
     return (
         <div>showAccountsInfo: {id}</div>
     )

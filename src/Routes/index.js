@@ -15,7 +15,7 @@ export const Router = () => {
                     <Route path='/*' element={ <MainPage name={userName} id={userID}/> }/>
                     <Route path='/sign-in' element={ <SignInForm/> }/>
                     <Route path='/log-in' element={ <LoginForm/> }/>
-                    <Route path='/accounts-info/:id' element={ <UserPage/> }/>
+                    <Route path='/accounts-info/:id' element={ <UserPage id={userID}/> }/>
                 </Routes>
             </BrowserRouter>
         </>

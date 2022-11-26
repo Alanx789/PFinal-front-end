@@ -31,7 +31,7 @@ export const LoginForm = () => {
   return (
 
     <>
-      <div className='loginForm'>
+      <div className='generalDiv'>
         <h1>UP Bank</h1>
         <p className='errorMessage'>{message}</p>
 

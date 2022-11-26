@@ -57,7 +57,7 @@ export const SignInForm = () => {
   return (
 
     <>
-      <div className='signInForm'>
+      <div className='generalDiv'>
         <h1> Account creation </h1>
         <p className='errorMessage'>{message}</p>
         
