@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 export const SignInForm = ( {setUserID, setUserName} )  => {
 
   //Variables del usuario
+  const [email, setEmail] = useState(undefined)
   const [name, setName] = useState(undefined)
   const [lastName, setLastName] = useState(undefined)
   const [phone, setPhone] = useState(undefined)
@@ -15,40 +16,58 @@ export const SignInForm = ( {setUserID, setUserName} )  => {
   const [message, setMessage] = useState(undefined)
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
 
     e.preventDefault()
 
     //Verificar que los campos tengan datos
-    if( name === '' || lastName === '' || phone === '' || password === '' || confirmPassword === '' ){ 
+    if( name === '' || lastName === '' || phone === '' || password === '' || confirmPassword === '' || email === '' ){ 
       setMessage("You must fill in all fields")
       return 
     }
     
     if( name === undefined || lastName === undefined || phone === undefined || password === undefined || 
-      confirmPassword === undefined ){ 
+      confirmPassword === undefined || email === undefined){ 
         setMessage("You must fill in all fields") 
         return 
     }
 
     if( password === confirmPassword){
-      setMessage(undefined)
 
       const newUser = {
-        name : {
-          firstName: name,
-          lastName: lastName,
-        },
+        email,
+        name: `${name} ${lastName}`, 
         phone,
         password
+
       }
 
-      console.log(newUser)
+      try {
 
-      setUserID('1')
-      setUserName(name)
+        const response = await fetch('/sign-in', {
+          method: 'POST',
+          body: JSON.stringify(newUser),
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          }
+        })
 
-      handleReturn()
+        const result = await response.json()
+        console.log(result)
+
+        if( result.status === 406){
+          setMessage("That user already exists")
+        } else {
+          setUserID(result.newUser.id)
+          setUserName(result.newUser.name)
+          handleReturn()
+        }
+        
+      } catch (error) {
+        console.log(error)
+        setMessage("Server error")
+      }
 
     } else{
       setMessage("Passwords must match")
@@ -68,8 +87,9 @@ export const SignInForm = ( {setUserID, setUserName} )  => {
         <p className='errorMessage'>{message}</p>
         
         <form  onSubmit={ (e) => { handleSubmit(e) } }>
-          <label>First Name:   </label> <input type='text' onChange={ (e) => { setName( e.target.value ) } }/> <br/><br/>
-          <label>Last name:  </label> <input type='text' onChange={ (e) => { setLastName( e.target.value ) } }/> <br/><br/>
+          <label>First Name: </label> <input type='text' onChange={ (e) => { setName( e.target.value ) } }/> <br/><br/>
+          <label>Last name: </label> <input type='text' onChange={ (e) => { setLastName( e.target.value ) } }/> <br/><br/>
+          <label>Email: </label> <input type='email' onChange={ (e) => { setEmail( e.target.value ) } }/> <br/><br/>
           <label>Phone: </label> <input type='tel' maxLength='10' onChange={ (e) => { setPhone( e.target.value ) } }/> <br/><br/>
           <label>New password: </label> <input type='text' onChange={ (e) => { setPassword( e.target.value )} }/> <br/><br/>
           <label>Confirm password: </label> <input type='text' onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/><br/><br/>

@@ -4,30 +4,55 @@ import PropTypes from 'prop-types'
 
 export const LoginForm = ({setUserID, setUserName}) => {
 
-  const [user, setUser] = useState(undefined)
+  const [email, setEmail] = useState(undefined)
   const [password, setPassword] = useState(undefined)
   
   const [message, setMessage] = useState(undefined)
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
 
     e.preventDefault()
     
-    if( user === undefined || user === '' ){ setMessage("Enter your user name"); return } 
+    if( email === undefined || email === '' ){ setMessage("Enter your email"); return } 
     if( password === undefined || password === '' ){ setMessage("Enter your password"); return } 
 
-    setMessage(undefined)
     const userInfo = {
-      user,
+      email,
       password
     }
 
-    console.log(userInfo)
-    setUserName(user)
-    setUserID(1)
+    try {
 
-    handleReturn()
+      const response = await fetch('/log-in', {
+        method: 'POST',
+        body: JSON.stringify(userInfo),
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        }
+      })
+
+      const result = await response.json()
+      console.log(result)
+
+      /* if( result.status === 404 ){
+        setMessage("User does not exist")
+      } else {
+        if( result.status === 202 ){
+          setUserID(result.user.id)
+          setUserName(result.user.name)
+          handleReturn()
+        } else {
+          setMessage("Wrong Password")
+        }
+
+      } */
+
+    } catch (error) {
+      console.log(error)
+      setMessage("Server error")
+    }
 
   }
 
@@ -43,7 +68,7 @@ export const LoginForm = ({setUserID, setUserName}) => {
         <p className='errorMessage'>{message}</p>
 
         <form onSubmit={ (e) => { handleSubmit(e) }}>
-          <label>User name: </label> <input  type='text' onChange={ (e) => { setUser(e.target.value) } }/> <br/><br/>
+          <label>Email: </label> <input  type='email' onChange={ (e) => { setEmail(e.target.value) } }/> <br/><br/>
           <label>Password: </label> <input type="password" onChange={ (e) => { setPassword(e.target.value) } }/> <br/><br/><br/>
           <button type='submit'>Log in</button>
           <p> Don't have an account? <u><a href="sign-in">Sign in</a></u> </p> 
