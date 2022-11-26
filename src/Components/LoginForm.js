@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const LoginForm = () => {
+export const LoginForm = ({setUserID, setUserName}) => {
 
   const [user, setUser] = useState(undefined)
   const [password, setPassword] = useState(undefined)
@@ -23,13 +23,15 @@ export const LoginForm = () => {
     }
 
     console.log(userInfo)
+    setUserName(user)
+    setUserID(1)
+
+    handleReturn()
 
   }
 
   const navigate = useNavigate()
-  const handleReturn = () => {
-    navigate('/')
-  }
+  const handleReturn = () => { navigate('/') }
 
 
   return (
@@ -40,7 +42,7 @@ export const LoginForm = () => {
         <p className='errorMessage'>{message}</p>
 
         <form onSubmit={ (e) => { handleSubmit(e) }}>
-          <label>User name: </label> <input onChange={ (e) => { setUser(e.target.value) } }/> <br/><br/>
+          <label>User name: </label> <input  type='text' onChange={ (e) => { setUser(e.target.value) } }/> <br/><br/>
           <label>Password: </label> <input type="password" onChange={ (e) => { setPassword(e.target.value) } }/> <br/><br/><br/>
           <button type='submit'>Log in</button>
           <p> Don't have an account? <u><a href="sign-in">Sign in</a></u> </p> 

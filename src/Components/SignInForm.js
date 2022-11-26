@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export const SignInForm = () => {
+export const SignInForm = ( {setUserID, setUserName} )  => {
 
   //Variables del usuario
   const [name, setName] = useState(undefined)
@@ -41,7 +41,13 @@ export const SignInForm = () => {
         phone,
         password
       }
+
       console.log(newUser)
+
+      setUserID('1')
+      setUserName(name)
+
+      handleReturn()
 
     } else{
       setMessage("Passwords must match")
@@ -50,9 +56,7 @@ export const SignInForm = () => {
   }
 
   const navigate = useNavigate()
-  const handleReturn = () => {
-    navigate('/')
-  }
+  const handleReturn = () => { navigate('/') }
 
 
   return (
@@ -63,12 +67,12 @@ export const SignInForm = () => {
         <p className='errorMessage'>{message}</p>
         
         <form  onSubmit={ (e) => { handleSubmit(e) } }>
-          <label>First Name:   </label> <input onChange={ (e) => { setName( e.target.value ) } }/> <br/><br/>
-          <label>Last name:  </label> <input onChange={ (e) => { setLastName( e.target.value ) } }/> <br/><br/>
-          <label>Phone: </label> <input onChange={ (e) => { setPhone( e.target.value ) } }/> <br/><br/>
-          <label>New password: </label> <input onChange={ (e) => { setPassword( e.target.value )} }/> <br/><br/>
-          <label>Confirm password: </label> <input onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/><br/><br/>
-          <button type='submit'>Sign in</button>
+          <label>First Name:   </label> <input type='text' onChange={ (e) => { setName( e.target.value ) } }/> <br/><br/>
+          <label>Last name:  </label> <input type='text' onChange={ (e) => { setLastName( e.target.value ) } }/> <br/><br/>
+          <label>Phone: </label> <input type='tel' maxLength='10' onChange={ (e) => { setPhone( e.target.value ) } }/> <br/><br/>
+          <label>New password: </label> <input type='text' onChange={ (e) => { setPassword( e.target.value )} }/> <br/><br/>
+          <label>Confirm password: </label> <input type='text' onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/><br/><br/>
+          <button type='submit'>Create account</button>
           <p> Already have an account? <u><a href="log-in">Log in</a></u> </p>
         </form> <br/><br/>
 
