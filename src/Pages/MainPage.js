@@ -12,7 +12,11 @@ export const MainPage = ( {name, id, setUserID, setUserName} ) => {
     navigate('/logged-out') 
   }
 
-  const message = (name === "guest") ? <u> <a href='log-in'>Wanna log in?</a></u> : <div>
+  const component = (name === "guest") ? <div>
+    <h1>Welcome to Up bank</h1>
+    <u> <a href='log-in'>Wanna log in?</a></u>
+  </div> : <div>
+    <h1>Welcome back {name}</h1>
     <button onClick={ handleLogIn }>Check your accounts</button><br/><br/>
     <button onClick={ handleLogOut }>Log Out</button>
   </div>
@@ -24,8 +28,7 @@ export const MainPage = ( {name, id, setUserID, setUserName} ) => {
       </div>
 
       <div className='generalDiv'>
-        <h1> Welcome to UP Bank</h1>
-        <>{ message }</>
+        <>{ component }</>
       </div>
     </>
   )
