@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './mainPage.css'
+import PropTypes from 'prop-types'
 
 export const MainPage = ( {name, id, setUserID, setUserName} ) => {
 
@@ -33,4 +34,10 @@ export const MainPage = ( {name, id, setUserID, setUserName} ) => {
     </>
   )
 
+}
+
+MainPage.propType = {
+  name: PropTypes.string.isRequired,
+  setUserID: PropTypes.func.isRequired,
+  setUserName: PropTypes.func.isRequired
 }

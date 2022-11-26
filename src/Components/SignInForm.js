@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 export const SignInForm = ( {setUserID, setUserName} )  => {
 
@@ -81,4 +82,9 @@ export const SignInForm = ( {setUserID, setUserName} )  => {
     </>
 
   )
+}
+
+SignInForm.propType = {
+  setUserID : PropTypes.func.isRequired,
+  setUserName : PropTypes.func.isRequired
 }

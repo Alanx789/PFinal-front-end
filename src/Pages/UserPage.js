@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 export const UserPage = ({id}) => {
 
@@ -12,4 +13,8 @@ export const UserPage = ({id}) => {
             <button onClick={handleReturn}>Return to home page</button>
         </>
     )
+}
+
+UserPage.propType = {
+    id : PropTypes.string.isRequired
 }

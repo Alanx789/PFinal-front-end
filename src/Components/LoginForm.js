@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 export const LoginForm = ({setUserID, setUserName}) => {
 
@@ -53,4 +54,9 @@ export const LoginForm = ({setUserID, setUserName}) => {
     </>
 
   )
+}
+
+LoginForm.propType =  {
+  setUserID: PropTypes.func.isRequired,
+  setUserName: PropTypes.func.isRequired
 }
