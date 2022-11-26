@@ -9,7 +9,9 @@ export const LoginForm = () => {
   const [message, setMessage] = useState(undefined)
 
 
-  const submitHandler = () => {
+  const handleSubmit = (e) => {
+
+    e.preventDefault()
     
     if( user === undefined || user === '' ){ setMessage("Enter your user name"); return } 
     if( password === undefined || password === '' ){ setMessage("Enter your password"); return } 
@@ -19,6 +21,8 @@ export const LoginForm = () => {
       user,
       password
     }
+
+    console.log(userInfo)
 
   }
 
@@ -35,7 +39,7 @@ export const LoginForm = () => {
         <h1>UP Bank</h1>
         <p className='errorMessage'>{message}</p>
 
-        <form onSubmit={submitHandler}>
+        <form onSubmit={ (e) => { handleSubmit(e) }}>
           <label>User name: </label> <input onChange={ (e) => { setUser(e.target.value) } }/> <br/><br/>
           <label>Password: </label> <input type="password" onChange={ (e) => { setPassword(e.target.value) } }/> <br/><br/><br/>
           <button type='submit'>Log in</button>

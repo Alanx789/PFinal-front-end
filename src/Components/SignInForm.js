@@ -14,7 +14,9 @@ export const SignInForm = () => {
   const [message, setMessage] = useState(undefined)
   
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+
+    e.preventDefault()
 
     //Verificar que los campos tengan datos
     if( name === '' || lastName === '' || phone === '' || password === '' || confirmPassword === '' ){ 
@@ -61,13 +63,13 @@ export const SignInForm = () => {
         <h1> Account creation </h1>
         <p className='errorMessage'>{message}</p>
         
-        <form  onSubmit={ handleSubmit }>
+        <form  onSubmit={ (e) => { handleSubmit(e) } }>
           <label>First Name:   </label> <input onChange={ (e) => { setName( e.target.value ) } }/> <br/><br/>
           <label>Last name:  </label> <input onChange={ (e) => { setLastName( e.target.value ) } }/> <br/><br/>
           <label>Phone: </label> <input onChange={ (e) => { setPhone( e.target.value ) } }/> <br/><br/>
           <label>New password: </label> <input onChange={ (e) => { setPassword( e.target.value )} }/> <br/><br/>
           <label>Confirm password: </label> <input onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/><br/><br/>
-          <button /* type="submit" */ onClick={ handleSubmit } >Sign in</button>
+          <button type='submit'>Sign in</button>
           <p> Already have an account? <u><a href="log-in">Log in</a></u> </p>
         </form> <br/><br/>
 
