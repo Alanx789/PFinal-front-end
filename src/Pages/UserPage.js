@@ -9,8 +9,10 @@ export const UserPage = ({id}) => {
 
     return (
         <>
-            <div>showAccountsInfo: {id}</div>
-            <button onClick={handleReturn}>Return to home page</button>
+            <div className='showUserName'> Your ID is: {id}</div>
+            <div className='generalDiv'>
+                <button onClick={handleReturn}>Return to home page</button>
+            </div>
         </>
     )
 }

@@ -36,7 +36,7 @@ export const LoginForm = ({setUserID, setUserName}) => {
       const result = await response.json()
       console.log(result)
 
-      /* if( result.status === 404 ){
+      if( result.status === 404 ){
         setMessage("User does not exist")
       } else {
         if( result.status === 202 ){
@@ -46,8 +46,7 @@ export const LoginForm = ({setUserID, setUserName}) => {
         } else {
           setMessage("Wrong Password")
         }
-
-      } */
+      }
 
     } catch (error) {
       console.log(error)
