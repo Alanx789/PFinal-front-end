@@ -1,2 +1,2 @@
 export * from './MainPage'
-export * from './Auth'
+export * from './UserPage'

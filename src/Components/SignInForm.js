@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import './signIn.css'
+import { useNavigate } from 'react-router-dom'
 
-export const SignInForm = ( { redirect } ) => {
+export const SignInForm = () => {
 
   //Variables del usuario
   const [name, setName] = useState(undefined)
@@ -13,7 +13,7 @@ export const SignInForm = ( { redirect } ) => {
   //Para la verificacion de igualdad
   const [message, setMessage] = useState(undefined)
   
-  
+
   const handleSubmit = () => {
 
     //Verificar que los campos tengan datos
@@ -48,6 +48,11 @@ export const SignInForm = ( { redirect } ) => {
 
   }
 
+  const navigate = useNavigate()
+  const handleReturn = () => {
+    navigate('/')
+  }
+
 
   return (
 
@@ -62,8 +67,10 @@ export const SignInForm = ( { redirect } ) => {
           <label>New password: </label> <input onChange={ (e) => { setPassword( e.target.value )} }/> <br/><br/>
           <label>Confirm password: </label> <input onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/><br/><br/>
           <button /* type="submit" */ onClick={ handleSubmit } >Sign in</button>
-          <p> Already have an account? <u onClick={ redirect } >Log In</u> </p>
+          <p> Already have an account? <u><a href="log-in">Log in</a></u> </p>
         </form>
+
+        <button onClick={handleReturn}>Return to home page</button>
       </div>
     </>
 

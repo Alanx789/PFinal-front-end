@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import './LogIn.css'
+import { useNavigate } from 'react-router-dom'
 
-export const LoginForm = ( { redirect } ) => {
+export const LoginForm = () => {
 
   const [user, setUser] = useState(undefined)
   const [password, setPassword] = useState(undefined)
@@ -22,6 +22,11 @@ export const LoginForm = ( { redirect } ) => {
 
   }
 
+  const navigate = useNavigate()
+  const handleReturn = () => {
+    navigate('/')
+  }
+
 
   return (
 
@@ -33,8 +38,9 @@ export const LoginForm = ( { redirect } ) => {
           <label>User name: </label> <input onChange={ (e) => { setUser(e.target.value) } }/> <br/><br/>
           <label>Password: </label> <input type="password" onChange={ (e) => { setPassword(e.target.value) } }/> <br/><br/><br/>
           <button type='submit'>Log in</button>
-          <p> Don't have an account? <u onClick={ redirect }>Sign In</u> </p> 
+          <p> Don't have an account? <u><a href="sign-in">Sign in</a></u> </p> 
         </form>
+        <button onClick={handleReturn}>Return to home page</button>
       </div>
     </>
 
