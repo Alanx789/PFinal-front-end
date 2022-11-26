@@ -34,7 +34,6 @@ export const SignInForm = () => {
       setMessage(undefined)
 
       const newUser = {
-        userID : "A",
         name : {
           firstName: name,
           lastName: lastName,
