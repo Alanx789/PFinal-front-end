@@ -34,12 +34,14 @@ export const LoginForm = () => {
       <div className='loginForm'>
         <h1>UP Bank</h1>
         <p className='errorMessage'>{message}</p>
+
         <form onSubmit={submitHandler}>
           <label>User name: </label> <input onChange={ (e) => { setUser(e.target.value) } }/> <br/><br/>
           <label>Password: </label> <input type="password" onChange={ (e) => { setPassword(e.target.value) } }/> <br/><br/><br/>
           <button type='submit'>Log in</button>
           <p> Don't have an account? <u><a href="sign-in">Sign in</a></u> </p> 
-        </form>
+        </form> <br/><br/>
+        
         <button onClick={handleReturn}>Return to home page</button>
       </div>
     </>

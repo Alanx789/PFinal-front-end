@@ -60,6 +60,7 @@ export const SignInForm = () => {
       <div className='signInForm'>
         <h1> Account creation </h1>
         <p className='errorMessage'>{message}</p>
+        
         <form  onSubmit={ handleSubmit }>
           <label>First Name:   </label> <input onChange={ (e) => { setName( e.target.value ) } }/> <br/><br/>
           <label>Last name:  </label> <input onChange={ (e) => { setLastName( e.target.value ) } }/> <br/><br/>
@@ -68,7 +69,7 @@ export const SignInForm = () => {
           <label>Confirm password: </label> <input onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/><br/><br/>
           <button /* type="submit" */ onClick={ handleSubmit } >Sign in</button>
           <p> Already have an account? <u><a href="log-in">Log in</a></u> </p>
-        </form>
+        </form> <br/><br/>
 
         <button onClick={handleReturn}>Return to home page</button>
       </div>
