@@ -12,12 +12,18 @@ export const MainPage = ( {name, id, setUserID, setUserName} ) => {
     setUserName('guest') 
     navigate('/logged-out') 
   }
+  const handleInquiries = () =>{ navigate(`/accounts-info/${id}`) }
+  const handleTransactions = () =>{ navigate(`/transactions/${id}`) }
 
   const component = (name === "guest") ? <div>
     <h1>Welcome to Up bank</h1>
     <u> <a href='log-in'>Wanna log in?</a></u>
   </div> : <div>
     <h1>Welcome back {name}</h1>
+    <p>Please select the options you desired</p>
+    <button onClick={ handleInquiries }>Inquiries</button>
+    <button onClick={ handleTransactions }>Transactions</button>
+
     <button onClick={ handleLogIn }>Check your accounts</button><br/><br/>
     <button onClick={ handleLogOut }>Log Out</button>
   </div>

@@ -18,8 +18,8 @@ export const LoginForm = ({setUserID, setUserName}) => {
     if( password === undefined || password === '' ){ setMessage("Enter your password"); return } 
 
     const userInfo = {
-      email,
-      password
+      email: email,
+      password: password
     }
 
     try {

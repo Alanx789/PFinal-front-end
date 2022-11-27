@@ -91,8 +91,8 @@ export const SignInForm = ( {setUserID, setUserName} )  => {
           <label>Last name: </label> <input type='text' onChange={ (e) => { setLastName( e.target.value ) } }/> <br/><br/>
           <label>Email: </label> <input type='email' onChange={ (e) => { setEmail( e.target.value ) } }/> <br/><br/>
           <label>Phone: </label> <input type='tel' maxLength='10' onChange={ (e) => { setPhone( e.target.value ) } }/> <br/><br/>
-          <label>New password: </label> <input type='text' onChange={ (e) => { setPassword( e.target.value )} }/> <br/><br/>
-          <label>Confirm password: </label> <input type='text' onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/><br/><br/>
+          <label>Password: </label> <input type='password' onChange={ (e) => { setPassword( e.target.value )} }/> <br/><br/>
+          <label>Confirm password: </label> <input type='password' onChange={ (e) => { setConfirmPassword( e.target.value ) } }/> <br/><br/><br/>
           <button type='submit'>Create account</button>
           <p> Already have an account? <u><a href="log-in">Log in</a></u> </p>
         </form> <br/><br/>
