@@ -46,5 +46,5 @@ const handleOnClickPayments = (e) => {
 
 Transactions.propType = {
     id : PropTypes.string.isRequired,
-    money : PropTypes.integer.isRequired
+   // money : PropTypes.integer.isRequired
 }
