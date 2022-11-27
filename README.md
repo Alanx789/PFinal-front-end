@@ -17,4 +17,4 @@ Pasos para la instalación del programa localmente:
       npm start
 ```
 
-
+## Es importante que los proyecto Back-End y Front-End estén corriendo simultáneamente para que pueda funcionar correctamente
