@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
-import { LoginForm, SignInForm, Transaction } from '../Components'
-import { MainPage, UserPage } from '../Pages'
+import { LoginForm, SignInForm } from '../Components'
+import { MainPage, UserPage, Transactions } from '../Pages'
 import { LogOutPage } from '../Pages/LogOutPage'
 
 export const Router = () => {
