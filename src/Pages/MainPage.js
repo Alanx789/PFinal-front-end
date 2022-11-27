@@ -12,7 +12,6 @@ export const MainPage = ( {name, id, setUserID, setUserName} ) => {
     setUserName('guest') 
     navigate('/logged-out') 
   }
-  const handleInquiries = () =>{ navigate(`/accounts-info/${id}`) }
   const handleTransactions = () =>{ navigate(`/transactions/${id}`) }
 
   const component = (name === "guest") ? <div>
@@ -20,8 +19,7 @@ export const MainPage = ( {name, id, setUserID, setUserName} ) => {
     <u> <a href='log-in'>Wanna log in?</a></u>
   </div> : <div>
     <h1>Welcome back {name}</h1>
-    <p>Please select the options you desired</p>
-    <button onClick={ handleInquiries }>Inquiries</button>
+    <p>Please select the option you desired</p>
     <button onClick={ handleTransactions }>Transactions</button>
 
     <button onClick={ handleLogIn }>Check your accounts</button><br/><br/>
